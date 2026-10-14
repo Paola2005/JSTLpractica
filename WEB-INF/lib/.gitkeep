@@ -1,0 +1,31 @@
+# JARs requeridos para JSTLpractica
+
+Este directorio debe contener los siguientes archivos JAR:
+
+## 1. JSTL 1.2.1 (javax.servlet.jsp.jstl-1.2.1.jar)
+- **Descarga:** https://www.java2s.com/Code/Jar/j/Downloadjavaxservletjspjstl121jar.htm
+- **Alternativa (Maven Central):** https://repo1.maven.org/maven2/javax/servlet/jsp/jstl/javax.servlet.jsp.jstl-api/1.2.1/javax.servlet.jsp.jstl-api-1.2.1.jar
+- **Implementación (glassfish):** https://repo1.maven.org/maven2/org/glassfish/web/javax.servlet.jsp.jstl/1.2.4/javax.servlet.jsp.jstl-1.2.4.jar
+
+## 2. MySQL Connector/J 5.1.12 (mysql-connector-java-5.1.12-bin.jar)
+- **Descarga:** https://www.java2s.com/Code/Jar/m/Downloadmysqlconnectorjava5112binjar.htm
+- **Alternativa (Maven Central):** https://repo1.maven.org/maven2/mysql/mysql-connector-java/5.1.12/mysql-connector-java-5.1.12.jar
+
+## Importante: Ubicación de los JARs
+
+Para evitar problemas de ClassLoader, coloca los JARs en **AMBAS** ubicaciones:
+
+1. **En el proyecto:** `JSTLpractica/WEB-INF/lib/`
+2. **En Tomcat:** `$CATALINA_HOME/lib/` (ejemplo: `C:\xampp\tomcat\lib\`)
+
+## Verificación
+
+Después de colocar los JARs, reinicia Tomcat y verifica que la aplicación funciona en:
+http://localhost:8080/JSTLpractica/
+
+## Nota para Tomcat 10+
+
+Si usas Tomcat 10 o superior (Jakarta EE 9+), necesitarás:
+- JSTL 3.0+ (jakarta.servlet.jsp.jstl-api)
+- MySQL Connector/J 8.0+
+- Cambiar URIs de taglib: `http://java.sun.com/jsp/jstl/core` → `jakarta.tags.core`
