@@ -41,7 +41,7 @@ JSTLpractica/
 ### Opción A: Descarga automática (si hay internet)
 Los JARs se descargan a `WEB-INF/lib/`:
 - `javax.servlet.jsp.jstl-1.2.1.jar` (JSTL 1.2.1)
-- `mysql-connector-java-5.1.12-bin.jar` (MySQL Connector/J 5.1.12)
+- `mysql-connector-j-8.0.33.jar` (MySQL Connector/J 8.0.33)
 
 ### Opción B: Descarga manual (si no hay internet)
 Coloca los siguientes JARs en **ambas** ubicaciones:
@@ -51,7 +51,7 @@ Coloca los siguientes JARs en **ambas** ubicaciones:
 
 **Enlaces de descarga (java2s.com):**
 - JSTL 1.2.1: https://www.java2s.com/Code/Jar/j/Downloadjavaxservletjspjstl121jar.htm
-- MySQL Connector/J 5.1.12: https://www.java2s.com/Code/Jar/m/Downloadmysqlconnectorjava5112binjar.htm
+- MySQL Connector/J 8.0.33: https://repo1.maven.org/maven2/com/mysql/mysql-connector-j/8.0.33/mysql-connector-j-8.0.33.jar
 
 > **Nota:** Si los JARs solo están en `WEB-INF/lib` del proyecto, pueden surgir conflictos de ClassLoader. Lo ideal es tenerlos también en `tomcat/lib/`.
 

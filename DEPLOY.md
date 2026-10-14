@@ -104,6 +104,7 @@ MYSQL_ADDON_USER=root MYSQL_ADDON_PASSWORD=root bash db/cargar_db.sh
 - Sin `try-with-resources` que añadir: no hay código `.java` (proyecto JSP/JSTL puro).
 - Archivos subidos: la app **no guarda ficheros en disco** (formularios solo a MySQL), así que el
   sistema de ficheros efímero del contenedor no es un problema.
-- Driver: `WEB-INF/lib` traía `mysql-connector-java-5.1.12` (solo clase `com.mysql.jdbc.Driver`),
-  incompatible con el `com.mysql.cj.jdbc.Driver` que usa la app. El `Dockerfile` descarga
-  `mysql-connector-j-8.0.33.jar` dentro de la imagen y conserva el JAR antiguo.
+- Driver: `WEB-INF/lib` usa únicamente `mysql-connector-j-8.0.33.jar` (clase
+  `com.mysql.cj.jdbc.Driver`, la que usa la app). El antiguo `mysql-connector-java-5.1.12`
+  se eliminó del proyecto y el `Dockerfile` borra cualquier resto 5.x en la imagen,
+  así que solo hay un driver MySQL en el classpath.
