@@ -1,0 +1,18 @@
+<%-- Conexion MySQL por variables de entorno (Clever Cloud) con defaults locales XAMPP.
+     Requiere mysql-connector-j 8.x (driver com.mysql.cj.jdbc.Driver) en WEB-INF/lib.
+     Las etiquetas JSTL <sql:*> abren y cierran la conexion por peticion: no usar pool manual. --%>
+<%
+  String dbHost = System.getenv("MYSQL_ADDON_HOST");
+  if (dbHost == null || dbHost.isEmpty()) dbHost = "localhost";
+  String dbPort = System.getenv("MYSQL_ADDON_PORT");
+  if (dbPort == null || dbPort.isEmpty()) dbPort = "3306";
+  String dbName = System.getenv("MYSQL_ADDON_DB");
+  if (dbName == null || dbName.isEmpty()) dbName = "empleados";
+  String dbUser = System.getenv("MYSQL_ADDON_USER");
+  if (dbUser == null || dbUser.isEmpty()) dbUser = "root";
+  String dbPass = System.getenv("MYSQL_ADDON_PASSWORD");
+  if (dbPass == null) dbPass = "";
+  String jdbcUrl = "jdbc:mysql://" + dbHost + ":" + dbPort + "/" + dbName
+      + "?useUnicode=true&characterEncoding=UTF-8&serverTimezone=America/Bogota&useSSL=false&allowPublicKeyRetrieval=true";
+%>
+<sql:setDataSource var="empleados" driver="com.mysql.cj.jdbc.Driver" url="<%=jdbcUrl%>" user="<%=dbUser%>" password="<%=dbPass%>" />
