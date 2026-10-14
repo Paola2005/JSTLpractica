@@ -1,0 +1,6 @@
+{
+  "deploy": {
+    "container": "TOMCAT9",
+    "war": [{ "file": "jstlpractica.war", "context": "/", "checkMe": "/" }]
+  }
+}
