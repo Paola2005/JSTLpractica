@@ -1,0 +1,33 @@
+# Solo para pruebas locales. En Clever Cloud NO se usa (app tipo Docker + add-on MySQL).
+services:
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: empleados
+    ports:
+      - "3306:3306"
+    volumes:
+      - dbdata:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      MYSQL_ADDON_HOST: db
+      MYSQL_ADDON_PORT: 3306
+      MYSQL_ADDON_DB: empleados
+      MYSQL_ADDON_USER: root
+      MYSQL_ADDON_PASSWORD: root
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  dbdata:
